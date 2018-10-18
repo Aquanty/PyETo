@@ -5,7 +5,7 @@ Unit conversion functions.
 :license: BSD 3-Clause, see LICENSE.txt for more details.
 """
 
-import math
+import numpy
 
 
 def celsius2kelvin(celsius):
@@ -38,7 +38,7 @@ def deg2rad(degrees):
     :return: Value in radians
     :rtype: float
     """
-    return degrees * (math.pi / 180.0)
+    return degrees * (numpy.pi / 180.0)
 
 
 def rad2deg(radians):
@@ -49,4 +49,4 @@ def rad2deg(radians):
     :return: Value in angular degrees
     :rtype: float
     """
-    return radians * (180.0 / math.pi)
+    return radians * (180.0 / numpy.pi)

@@ -31,7 +31,11 @@ The documentation can be found at TODO: insert link
 Installation
 ============
 
-TODO: complete this section
+Build a wheel file and then install it using pip. 
+
+"python setup.py bdist_wheel"
+
+"pip install dist/PyETo-0.2.1-py3-none-any.whl"
 
 Versions tested
 ===============
