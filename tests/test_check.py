@@ -9,16 +9,15 @@ from pyeto.convert import deg2rad
 
 
 class TestCheck(unittest.TestCase):
-
     def test_check_day_hours(self):
         with self.assertRaises(ValueError):
-            _check.check_day_hours(-1, 'test')
+            _check.check_day_hours(-1, "test")
 
         with self.assertRaises(ValueError):
-            _check.check_day_hours(25, 'test')
+            _check.check_day_hours(25, "test")
 
-        self.assertIsNone(_check.check_day_hours(0, 'test'))
-        self.assertIsNone(_check.check_day_hours(24, 'test'))
+        self.assertIsNone(_check.check_day_hours(0, "test"))
+        self.assertIsNone(_check.check_day_hours(24, "test"))
 
     def test_check_doy(self):
         with self.assertRaises(ValueError):

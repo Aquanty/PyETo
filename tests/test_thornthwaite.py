@@ -8,7 +8,6 @@ import pyeto
 
 
 class TestThornthwaite(unittest.TestCase):
-
     def test_monthly_mean_daylight_hours(self):
         # Test against values for latitude 20 deg N from Bautista et al (2009)
         # Calibration of the equations of Hargreaves and Thornthwaite to
@@ -41,7 +40,7 @@ class TestThornthwaite(unittest.TestCase):
         # MIMIKOU M. (2003) ESTIMATING POTENTIAL EVAPOTRANSPIRATION AND ITS
         # SPATIAL DISTRIBUTION IN GREECE USING EMPIRICAL METHODS.
         test_mmdlh = [
-            8.9,   # Jan
+            8.9,  # Jan
             10.1,  # Feb
             11.6,  # Mar
             13.3,  # Apr
@@ -51,8 +50,8 @@ class TestThornthwaite(unittest.TestCase):
             13.9,  # Aug
             12.3,  # Sep
             10.7,  # Oct
-            9.2,   # Nov
-            8.5,   # Dec
+            9.2,  # Nov
+            8.5,  # Dec
         ]
         mmdlh = pyeto.monthly_mean_daylight_hours(pyeto.deg2rad(46.0))
         # Values were only quoted to 1 decimal place so check they are accurate
@@ -76,7 +75,7 @@ class TestThornthwaite(unittest.TestCase):
             12.374,  # Sep
             11.320,  # Oct
             10.401,  # Nov
-            9.928,   # Dec
+            9.928,  # Dec
         ]
 
         mmdlh = pyeto.monthly_mean_daylight_hours(latitude)
@@ -108,30 +107,61 @@ class TestThornthwaite(unittest.TestCase):
 
         # Test with bad latitude
         with self.assertRaises(ValueError):
-            _ = pyeto.monthly_mean_daylight_hours(
-                pyeto.deg2rad(90.01))
+            _ = pyeto.monthly_mean_daylight_hours(pyeto.deg2rad(90.01))
 
         with self.assertRaises(ValueError):
-            _ = pyeto.monthly_mean_daylight_hours(
-                pyeto.deg2rad(-90.01))
+            _ = pyeto.monthly_mean_daylight_hours(pyeto.deg2rad(-90.01))
 
         # Test limits of latitude
-        _ = pyeto.monthly_mean_daylight_hours(
-            pyeto.deg2rad(90.0))
+        _ = pyeto.monthly_mean_daylight_hours(pyeto.deg2rad(90.0))
 
-        _ = pyeto.monthly_mean_daylight_hours(
-            pyeto.deg2rad(-90.0))
+        _ = pyeto.monthly_mean_daylight_hours(pyeto.deg2rad(-90.0))
 
     def test_thornthwaite(self):
         # Test values obtained from a worked example in Hydrology: An
         # Environmental Approach, pp 435-436 by Ian Watson.
         test_monthly_t = [
-            2.1, 2.5, 4.8, 7.1, 8.3, 10.7, 13.4, 14.5, 11.1, 8.2, 5.4, 3.7]
+            2.1,
+            2.5,
+            4.8,
+            7.1,
+            8.3,
+            10.7,
+            13.4,
+            14.5,
+            11.1,
+            8.2,
+            5.4,
+            3.7,
+        ]
         test_monthly_mean_dlh = [
-            9.4, 10.6, 11.9, 13.4, 14.6, 15.2, 14.9, 13.9, 12.6, 11.1, 9.8, 9.1]
+            9.4,
+            10.6,
+            11.9,
+            13.4,
+            14.6,
+            15.2,
+            14.9,
+            13.9,
+            12.6,
+            11.1,
+            9.8,
+            9.1,
+        ]
         test_pet = [
-            10.67, 14.08, 28.49, 45.85, 57.47, 75.20, 89.91, 90.29, 64.26,
-            43.34, 26.24, 17.31]
+            10.67,
+            14.08,
+            28.49,
+            45.85,
+            57.47,
+            75.20,
+            89.91,
+            90.29,
+            64.26,
+            43.34,
+            26.24,
+            17.31,
+        ]
 
         # NOTE: The test PET was calculated using rounded coefficients, rounded
         # intermediate values and doesn't adjust for the number of days in
@@ -143,15 +173,13 @@ class TestThornthwaite(unittest.TestCase):
             self.assertLess(diff, 4)
 
         # Test with non-leap year
-        pet_non_leap = pyeto.thornthwaite(
-            test_monthly_t, test_monthly_mean_dlh, year=2015)
+        pet_non_leap = pyeto.thornthwaite(test_monthly_t, test_monthly_mean_dlh, year=2015)
         # Test results are same as above when year argument is set
         for m in range(12):
             self.assertEqual(pet[m], pet_non_leap[m])
 
         # Test with leap year
-        pet_leap = pyeto.thornthwaite(
-            test_monthly_t, test_monthly_mean_dlh, year=2016)
+        pet_leap = pyeto.thornthwaite(test_monthly_t, test_monthly_mean_dlh, year=2016)
         for m in range(12):
             # 29 days in Feb so PET should be higher than in non-leap year
             # results
@@ -171,5 +199,5 @@ class TestThornthwaite(unittest.TestCase):
             _ = pyeto.thornthwaite(test_monthly_t, list(range(13)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
