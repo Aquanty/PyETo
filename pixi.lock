@@ -385,8 +385,8 @@ packages:
   requires_python: '>=3.8'
 - pypi: .
   name: pyeto
-  version: 0.2.1
-  sha256: bf584b17148e2f598408f4bace921f143f9c461e1f2af2ef8a6d530918815d3a
+  version: 0.2.2
+  sha256: 02215cb4931a3274007844be5fc0bebf9fa099c7be7ccbc17cd56f2f0423ee85
   requires_dist:
   - numpy>=2.2.5,<3
   requires_python: '>=3.11'

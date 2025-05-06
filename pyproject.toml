@@ -3,7 +3,7 @@ name = "PyETo"
 description = "Library for estimating reference and potential evapotranspiration."
 authors = [{name = "Mark Richards", email = "mark.l.a.richardsREMOVETHIS@gmail.com"}]
 requires-python = ">= 3.11"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = ["numpy>=2.2.5,<3"]
 
 [build-system]
