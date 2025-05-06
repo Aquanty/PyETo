@@ -67,18 +67,18 @@ def thornthwaite(monthly_t, monthly_mean_dlh, year=None):
     # Negative temperatures should be set to zero
     adj_monthly_t = [t * (t >= 0) for t in monthly_t]
 
-    # Calculate the heat index (I)
-    I = 0.0
+    # Calculate the heat index (i)
+    i = 0.0
     for Tai in adj_monthly_t:
         if Tai / 5.0 > 0.0:
-            I += (Tai / 5.0) ** 1.514
+            i += (Tai / 5.0) ** 1.514
 
-    a = (6.75e-07 * I**3) - (7.71e-05 * I**2) + (1.792e-02 * I) + 0.49239
+    a = (6.75e-07 * i**3) - (7.71e-05 * i**2) + (1.792e-02 * i) + 0.49239
 
     pet = []
     for Ta, L, N in zip(adj_monthly_t, monthly_mean_dlh, month_days):
         # Multiply by 10 to convert cm/month --> mm/month
-        pet.append(1.6 * (L / 12.0) * (N / 30.0) * ((10.0 * Ta / I) ** a) * 10.0)
+        pet.append(1.6 * (L / 12.0) * (N / 30.0) * ((10.0 * Ta / i) ** a) * 10.0)
 
     return pet
 

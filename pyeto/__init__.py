@@ -1,5 +1,3 @@
-import pyeto
-
 from pyeto.convert import (
     celsius2kelvin,
     kelvin2celsius,

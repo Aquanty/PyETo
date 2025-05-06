@@ -386,7 +386,7 @@ packages:
 - pypi: .
   name: pyeto
   version: 0.2.1
-  sha256: a9e0b0185536ed91b7b0e91a8086c244987702f531afe90c73158ca68d20c735
+  sha256: bf584b17148e2f598408f4bace921f143f9c461e1f2af2ef8a6d530918815d3a
   requires_dist:
   - numpy>=2.2.5,<3
   requires_python: '>=3.11'
