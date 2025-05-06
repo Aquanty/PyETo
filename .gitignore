@@ -6,3 +6,7 @@
 __pycache__
 dist
 build
+
+# pixi environments
+.pixi
+*.egg-info
