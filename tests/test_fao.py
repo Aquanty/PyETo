@@ -12,7 +12,6 @@ from pyeto import convert
 
 
 class TestFAO(unittest.TestCase):
-
     def setUp(self):
         pass
 
@@ -59,7 +58,7 @@ class TestFAO(unittest.TestCase):
 
     def test_avp_from_rhmean(self):
         # Test based on FAO example 5
-        avp = pyeto.avp_from_rhmean(2.064, 3.168, (82+54)/2.0)
+        avp = pyeto.avp_from_rhmean(2.064, 3.168, (82 + 54) / 2.0)
         self.assertAlmostEqual(avp, 1.78, 2)
 
     def test_avp_from_tdew(self):
@@ -69,7 +68,7 @@ class TestFAO(unittest.TestCase):
 
     def test_avp_from_twet_tdry(self):
         # Test based on example 4, p.70 of FAO paper
-        avp = pyeto.avp_from_twet_tdry(19.5, 25.6, 2.267, 0.000662*87.9)
+        avp = pyeto.avp_from_twet_tdry(19.5, 25.6, 2.267, 0.000662 * 87.9)
         self.assertAlmostEqual(avp, 1.91, 2)
 
     def test_et_rad(self):
@@ -110,7 +109,7 @@ class TestFAO(unittest.TestCase):
             svp=1.997,
             avp=1.409,
             delta_svp=0.122,
-            psy=0.0666
+            psy=0.0666,
         )
         self.assertAlmostEqual(eto, 3.9, 1)
 
@@ -156,7 +155,7 @@ class TestFAO(unittest.TestCase):
             tmax=convert.celsius2kelvin(25.1),
             sol_rad=14.5,
             cs_rad=18.8,
-            avp=2.1
+            avp=2.1,
         )
         self.assertAlmostEqual(lwrad, 3.5, 1)
 
@@ -172,16 +171,12 @@ class TestFAO(unittest.TestCase):
 
     def test_psy_const_of_psychrometer(self):
         # Test based on example 2, p.63 of FAO paper
-        ea = 2.267 - pyeto.psy_const_of_psychrometer(
-            1, 87.9) * (25.6 - 19.5)
+        ea = 2.267 - pyeto.psy_const_of_psychrometer(1, 87.9) * (25.6 - 19.5)
         self.assertAlmostEqual(ea, 1.91, 2)
 
-        self.assertEqual(
-            pyeto.psy_const_of_psychrometer(1, 100), 100.0 * 0.000662)
-        self.assertEqual(
-            pyeto.psy_const_of_psychrometer(2, 100), 100.0 * 0.000800)
-        self.assertEqual(
-            pyeto.psy_const_of_psychrometer(3, 100), 100.0 * 0.001200)
+        self.assertEqual(pyeto.psy_const_of_psychrometer(1, 100), 100.0 * 0.000662)
+        self.assertEqual(pyeto.psy_const_of_psychrometer(2, 100), 100.0 * 0.000800)
+        self.assertEqual(pyeto.psy_const_of_psychrometer(3, 100), 100.0 * 0.001200)
 
         # Test bad pyschrometer
         with self.assertRaises(ValueError):
@@ -215,8 +210,7 @@ class TestFAO(unittest.TestCase):
         self.assertAlmostEqual(solrad, 22.3 * 0.19 / 0.16, 1)
 
         # Test that the clear sky radiation constraint is working:
-        solrad = pyeto.sol_rad_from_t(
-            40.6, 20.0, 14.8, 26.6, coastal=False)
+        solrad = pyeto.sol_rad_from_t(40.6, 20.0, 14.8, 26.6, coastal=False)
         self.assertAlmostEqual(solrad, 20.0, 1)
 
     def test_sol_rad_island(self):
@@ -235,5 +229,5 @@ class TestFAO(unittest.TestCase):
         self.assertAlmostEqual(ws, 2.4, 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

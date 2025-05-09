@@ -8,7 +8,6 @@ import pyeto
 
 
 class TestConvert(unittest.TestCase):
-
     def test_celsius2kelvin(self):
         self.assertEqual(pyeto.celsius2kelvin(0), 273.15)
 
@@ -30,5 +29,5 @@ class TestConvert(unittest.TestCase):
         self.assertAlmostEqual(pyeto.rad2deg(6.2831853072), 360.0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
