@@ -385,10 +385,10 @@ packages:
   requires_python: '>=3.8'
 - pypi: .
   name: pyeto
-  version: 0.2.2
-  sha256: 02215cb4931a3274007844be5fc0bebf9fa099c7be7ccbc17cd56f2f0423ee85
+  version: 0.2.3
+  sha256: c29161026ae17d90a0d9e6915ebcc5b7990893bd2a858cb344c96f20c2ec4d7c
   requires_dist:
-  - numpy>=2.2.5,<3
+  - numpy>=1,<3
   requires_python: '>=3.11'
   editable: true
 - pypi: https://files.pythonhosted.org/packages/bd/24/12818598c362d7f300f18e74db45963dbcb85150324092410c8b49405e42/pyproject_hooks-1.2.0-py3-none-any.whl
